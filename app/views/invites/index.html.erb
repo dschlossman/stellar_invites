@@ -1,0 +1,34 @@
+<h1>Welcome to stellar invites!</h1>
+</br>
+<h2> What is Stellar Invites? </h2>
+<p> This is a starting point for anyone interested in digital currency and the future of money.  Stellar is the newest way to send and receive money online in any pair of currency worldwide at rocket speed with very little remittance. The Stellar currency (STR) is an important part of the Stellar payment network that can be used as a bridge between currencies backed by different gateways worldwide.  For a limited time, early stellar adapters with stellar invites can invite others to sign up.  This site is a place to connect early stellar adapters with new users interested in joining the Stellar network and receive their free stellars.  </p>
+<h1>Requested invites</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Why this user wants an invite code</th>
+      <th>Send invite code to:</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invites.each do |invite| %>
+      <tr>
+        <td><%= invite.reason %></td>
+        <td><%= invite.user.email %></td>
+        <td><%= link_to 'Show', invite %></td>
+
+        <% if invite.user == current_user %>
+          <td><%= link_to 'Edit', edit_invite_path(invite) %></td>
+          <td><%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invite', new_invite_path %>
